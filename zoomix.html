@@ -179,33 +179,31 @@
 
             function keypress (e) {
                 // 37,38,39,40,32 :: left,up,right,down,space
-                if (done) {
-                    if (e.which == 32) {
-                        restart();
-                    }
+                switch(e.which) {
+                    case 32:
+                        if (done) {
+                            restart();
+                            return false;
+                        }
+                        return true;
+                    case 37:
+                        if (newZoomTowards % 3 != 0)
+                            newZoomTowards--;
+                        return false;
+                    case 38:
+                        if (Math.floor(newZoomTowards / 3) != 0)
+                            newZoomTowards -= 3;
+                        return false;
+                    case 39:
+                        if (newZoomTowards % 3 != 2)
+                            newZoomTowards++;
+                        return false;
+                    case 40:
+                        if (Math.floor(newZoomTowards / 3) != 2)
+                            newZoomTowards += 3;
+                        return false;
                 }
-                else {
-                    switch(e.which) {
-                        case 37:
-                            if (newZoomTowards % 3 != 0)
-                                newZoomTowards--;
-                            break;
-                        case 38:
-                            if (Math.floor(newZoomTowards / 3) != 0)
-                                newZoomTowards -= 3;
-                            break;
-                        case 39:
-                            if (newZoomTowards % 3 != 2)
-                                newZoomTowards++;
-                            break;
-                        case 40:
-                            if (Math.floor(newZoomTowards / 3) != 2)
-                                newZoomTowards += 3;
-                            break;
-                        default:
-                            return;
-                    }
-                }
+                return true;
             }
 
             function restart () {
