@@ -210,6 +210,9 @@ function restart () {
 
 // initialize
 $(document).ready(function () {
+                      // It's okay to be square
+                      $("#MD-Canvas").height($("#MD-Canvas").width());
+
                       canvas = $("#MD-Canvas").get()[0];
                       $("#MD-GameOver").hide();
 
