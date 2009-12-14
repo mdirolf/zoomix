@@ -4,7 +4,7 @@ var GAP_RATIO = 1.0 / 10.0; //size of the gap relative to size of a square in th
 var R_RATIO = 1.0 / 10.0;
 var LINE_RATIO = 1.0 / 20.0;
 var LINE_COLOR = "black";
-var SELECTED_COLOR = "skyblue"
+var SELECTED_COLOR = "skyblue";
 var TIMEOUT = 30;
 
 var COLORS = new Array(6);
@@ -33,8 +33,8 @@ var counter = 0;
 var done = false;
 
 function colorizeGrid (grid) {
-    for (i = 0; i < grid.length; i++) {
-        grid[i] = COLORS[Math.floor(Math.random() * COLORS.length)]
+    for (var i = 0; i < grid.length; i++) {
+        grid[i] = COLORS[Math.floor(Math.random() * COLORS.length)];
     }
 }
 
@@ -129,8 +129,8 @@ function step () {
         zoomStep *= 1.1;
     }
 
-    finalOffX = SIZE * 3.3 * (GAP_RATIO + 1) * (zoomTowards % 3)
-    finalOffY = SIZE * 3.3 * (GAP_RATIO + 1) * Math.floor(zoomTowards / 3)
+    var finalOffX = SIZE * 3.3 * (GAP_RATIO + 1) * (zoomTowards % 3);
+    var finalOffY = SIZE * 3.3 * (GAP_RATIO + 1) * Math.floor(zoomTowards / 3);
 
     xOffset += (finalOffX - xOffset) / ((1 - zoom) / zoomStep);
     yOffset += (finalOffY - yOffset) / ((1 - zoom) / zoomStep);
@@ -141,7 +141,7 @@ function step () {
         zoom = 0.0;
         xOffset = 0;
         yOffset = 0;
-        for (i = 0; i < big.length; i++)
+        for (var i = 0; i < big.length; i++)
             big[i] = small[i];
         colorizeGrid(small);
     }
